@@ -2,8 +2,8 @@ import type { ProductDefinition } from '@/types/product';
 
 
 export const tentProduct: ProductDefinition = {
-  id: '10x10-logo-canopy-tent',
-  name: '10x10 Logo Canopy Tent',
+  id: 'custom-logo-canopy-tent',
+  name: 'Custom Logo Canopy Tent',
   basePriceCents: 0, // size option carries the full base price for this product
   currency: 'INR',
   sections: [

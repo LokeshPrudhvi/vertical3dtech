@@ -126,7 +126,7 @@ function ConfiguratorInner() {
         <div className="configurator-title-wrap">
           <h1>{product.name}</h1>
           <span className="configurator-subtitle">
-            Custom 10x10 canopy tent with company logo, dye sublimation printing, and a lifetime frame warranty. 2-day production. No minimums, no setup fees.
+            Custom canopy tent with company logo, dye sublimation printing, and a lifetime frame warranty. 2-day production. No minimums, no setup fees.
           </span>
         </div>
       </header>
