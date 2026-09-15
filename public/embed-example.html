@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Example Host Site - Embedded Tent Configurator</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; margin: 0; background: #fafafa; }
+    header { padding: 20px 24px; background: #111; color: #fff; }
+    main { max-width: 1240px; margin: 0 auto; padding: 24px; }
+    iframe { width: 100%; height: 820px; border: 1px solid #ddd; border-radius: 12px; }
+    #log { margin-top: 16px; background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px; white-space: pre-wrap; min-height: 40px; }
+  </style>
+</head>
+<body>
+  <header><strong>MVP Visuals</strong> — Product Page (Host Storefront)</header>
+  <main>
+    <h1>10x10 Logo Canopy Tent</h1>
+    <p>Custom 10x10 canopy tent with company logo, dye sublimation printing, and a lifetime frame warranty. 2-day production. No minimums, no setup fees.</p>
+    <!--
+      In a real Shopify theme this src would point at your deployed configurator
+      app (e.g. https://configurator.yourbrand.com/?productId=pop-up-canopy-tent),
+      and the theme would pass the Shopify product/variant context via query
+      params so the same iframe embed can be reused across multiple products.
+    -->
+    <iframe src="/" title="Tent Configurator" allow="clipboard-write"></iframe>
+
+    <h3>Host page received (via postMessage):</h3>
+    <div id="log">Waiting for an "Add to Cart" event from the configurator…</div>
+  </main>
+
+  <script>
+    // The host page owns the real Shopify cart. On CONFIGURATOR_ADD_TO_CART it
+    // would normally call the theme's cart API / re-render the cart drawer;
+    // here we just log the payload to demonstrate the contract.
+    window.addEventListener('message', (event) => {
+      if (!event.data || event.data.type !== 'CONFIGURATOR_ADD_TO_CART') return;
+      document.getElementById('log').textContent = JSON.stringify(event.data.payload, null, 2);
+    });
+  </script>
+</body>
+</html>
